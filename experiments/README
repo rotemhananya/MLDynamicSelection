@@ -1,0 +1,37 @@
+
+Running experiments:
+Run with percentage: use "self.dataset.separate_data()" line in Experiment constructor.
+Run with Evaluations as models feature: useModelsEvaluations = True
+update csv name: located in the end of Experiment.py file
+Run large dataset: limit to 5 steps in manager.py and
+update percentage in manager while loop and in data_handler:
+
+Run MetaModel in Experiment2:
+delete first column and 'chosen_classifier' from meta features files
+replace NAN or NaN with 0
+run FinalClassifierChooser::merge_files
+delete first column from the merged files
+run FinalClassifierChooser::start_classifier_chooser
+
+
+MetaFeatures.csv:
+num_labeled_instances: number of instances for train.
+num_unlabeled_instances: number of instances for test.
+evaluation:  score of the classifier (not included in ChooseClassifier train).
+best_classifier: real best classifier for the current iteration.
+chosen_classifier: classifier that the ChooseClassifier chose for the current iteration.
+
+Results files:
+Experimant1 : Each iteration    1. Run hidden models
+                                2. extract meta-features
+                                3. run meta-model
+Experiment2: Each iteration     1. Run hidden models
+                                2. extract meta-features
+             Delete irrelevant columns & Merge files
+             Run meta-model (train: other datasets' features, test: current dataset's features)
+Experiment3: Each iteration     1. Run hidden models
+                                2. extract meta-features
+             Delete irrelevant columns & Merge files
+             Run meta-model (train: other datasets' features with prev steps of test sets,
+             test: current dataset's features)
+
